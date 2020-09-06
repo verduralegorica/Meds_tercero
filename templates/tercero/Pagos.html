@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}Resumen de compensación por tu participación{% endblock %}
+
+{% block content %}
+<font color="burlywood"><h4 align="right">Tu ID: {{ participant_id }}</h4></font>
+<br>
+<p>El experimento ha llegado a su final.</p>
+
+<p>Has respondido {{ numero }} de las 4 preguntas de entendimiento de las instrucciones.</p>
+
+<p>Entonces, has ganado S/5.00 por tu participación y {{ quiz_earnings }} por responder correctamente.</p>
+
+<p>Muchas gracias por participar.</p>
+
+<p>Dale click al siguiente enlace para recibir tu pago:</p>
+
+<p>
+<a href="https://forms.gle/q1v8cVvsugX8yq2J7">
+    https://forms.gle/q1v8cVvsugX8yq2J7 </a>
+</p>
+<br>
+
+    <input type="hidden" name="quiz_dec_2"/>
+    {{ form.quiz_dec_2.errors }}
+
+<br>
+
+
+<br><br>
+{% include Constants.contact_template %}
+{% endblock %}

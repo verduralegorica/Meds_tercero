@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}PARTE II. Cuestionario principal: sección 2{% endblock %}
+
+{% block content %}
+<font color="burlywood"><h4 align="right">Tu ID: {{ participant_id }}</h4></font>
+<br>
+<p>
+    Por favor, indique qué tan de acuerdo o desacuerdo está con lcada uno de los siguientes enunciados, donde 1 significa que está totalmente en desacuerdo y 7, que está totalmente de acuerdo.
+</p>
+<img src="{% static 'rangos.png' %}" width="950px"/>
+{% formfields %}
+
+{% next_button %}
+
+    {% include Constants.instructions_button %}
+<br>
+<br>
+    <p>
+    {% include Constants.contact_template %}
+    </p>
+
+{% endblock %}
