@@ -48,7 +48,12 @@ class Pagos(Page):
     def vars_for_template(self):
         return {'participant_id': self.participant.label,
                 'quiz_earnings': self.participant.vars['quiz_earnings'],
-                'numero' : self.participant.vars['quiz_questions_correct']
+                'numero': self.participant.vars['quiz_questions_correct'],
+                'ea1': self.participant.vars['ea1'],
+                'ea2': self.participant.vars['ea2'],
+                'ea3': self.participant.vars['ea3'],
+                'ea4': self.participant.vars['ea4'],
+                'pago_final': self.participant.vars['quiz_earnings'] + 5
                 }
 
 
