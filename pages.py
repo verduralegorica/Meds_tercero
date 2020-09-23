@@ -26,9 +26,12 @@ class General_fam(Page):
 
     # Variables que se utilizarán en esta sección
     form_model = 'player'
-    form_fields = ['edad', 'sexo', 'distrito', 'ciclo', 'cronica', 'agente_compra',
-                   'malestar_compra1', 'malestar_compra2', 'respirat', 'digestiv',
-                   'covid', 'ibuprof', 'paracet', 'amoxicil', 'loratadin', 'dexamet']
+    form_fields = ['anterior', 'edad', 'sexo', 'escala', 'educ_padre', 'educ_madre', 'distrito', 'ciclo',
+                   'cronica', 'agente_compra', 'malestar_compra1', 'malestar_compra2',
+                   'respirat', 'digestiv', 'covid',
+                   'ibuprof', 'ranitidin', 'amoxicil', 'loratadin', 'dexamet', 'epinef',
+                   'alergia', 'natural', 'natural_caso',
+                   'respirat_c', 'digestiv_c', 'covid_c']
 
     def vars_for_template(self):
         return dict(participant_id=self.participant.label)
@@ -39,7 +42,7 @@ class General_fam(Page):
         else:
             return False
 
-    timeout_seconds = 300
+    timeout_seconds = 480
 
 class Pagos(Page):
     form_model = 'player'

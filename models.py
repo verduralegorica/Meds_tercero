@@ -42,10 +42,22 @@ class Player(BasePlayer):
 
 
     # Preguntas adicionales
+
+    anterior = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Has participado en este esperimento en su versión piloto?',
+                                    widget=widgets.RadioSelect)
     edad = models.IntegerField(choices=[[18, '18'], [19, '19'], [20, '20'], [21, '21'], [22, '22'], [23, '23'], [24, '24'], [25, '25'],
                                         [26, '26'], [27, '27'], [28, '28'], [29, '29'], [30, '30'], [31, '31'], [32, '32'], [33, '33'],
                                         [34, '34'], [35, '35'], [36, '36'], [37, '37'], [38, '38'], [39, '39'], [40, '40']], label='Edad')
     sexo = models.IntegerField(choices=[[0, 'Masculino'], [1, 'Femenino']], label='Sexo', widget=widgets.RadioSelect)
+    escala = models.IntegerField(choices=[[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6']], label='Escala de pagos de la UP', widget=widgets.RadioSelect)
+    educ_padre = models.IntegerField(choices=[[0, 'Inicial'], [1, 'Primaria incompleta'], [2, 'Primaria completa'], [3, 'Secundaria incompleta'],
+                                               [4, 'Secundaria completa'], [5, 'Superior no universitaria incompleta'], [6, 'Superior no universitaria completa'],
+                                               [7, 'Universitaria incompleta'], [8, 'Universitaria completa'], [9, 'Postgrado']],
+                                      label='Máximo nivel de educación del padre', widget=widgets.RadioSelect)
+    educ_madre = models.IntegerField(choices=[[0, 'Inicial'], [1, 'Primaria incompleta'], [2, 'Primaria completa'], [3, 'Secundaria incompleta'],
+                                        [4, 'Secundaria completa'], [5, 'Superior no universitaria incompleta'],
+                                        [6, 'Superior no universitaria completa'], [7, 'Universitaria incompleta'], [8, 'Universitaria completa'], [9, 'Postgrado']],
+                                        label='Máximo nivel de educación de la madre', widget=widgets.RadioSelect)
     distrito = models.IntegerField(choices=[[1, 'Ancón'], [2, 'Ate Vitarte'], [3, 'Barranco'], [4, 'Breña'], [5, 'Carabayllo'],
                                            [6, 'Cercado de Lima'], [7, 'Chaclacayo'], [8, 'Chorrillos'], [9, 'Cieneguilla'], [10, 'Comas'],
                                            [11, 'El Agustino'], [12, 'Independencia'], [13, 'Jesús María'], [14, 'La Molina'], [15, 'La Victoria'],
@@ -57,19 +69,27 @@ class Player(BasePlayer):
                                            [41, 'Surquillo'], [42, 'Villa el Salvador'], [43, 'Villa María del Triunfo']], label='Distrito de residencia')
     ciclo = models.IntegerField(choices=[[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'],
                                          [7, '7'], [8, '8'], [9, '9'], [10, '10'], [11, '11'], [12, '12']], label='Último ciclo cursado')
-    cronica = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='¿Sufre de alguna enfermedad crónica?', widget=widgets.RadioSelect)
-    agente_compra = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='Cuando en tu hogar se necesita comprar medicamentos, ¿eres tú quien realiza la compra?', widget=widgets.RadioSelect)
-    malestar_compra1 = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='Cuando te sientes mal, ¿recurres al uso de medicamentos autorrecetados?', widget=widgets.RadioSelect)
-    malestar_compra2 = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='Cuando te sientes mal, ¿recurres a la compra de medicamentos recetados por un médico?', widget=widgets.RadioSelect)
-    respirat = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='¿Has sufrido recientemente de enfermedades relacionadas al aparato respiratorio?', widget=widgets.RadioSelect)
-    digestiv = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='¿Has sufrido recientemente de enfermedades relacionadas al aparato digestivo?', widget=widgets.RadioSelect)
-    covid = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='¿Has sufrido/sufres de síntomas de Covid-19?', widget=widgets.RadioSelect)
-    ibuprof = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='¿Alguna vez has consumido Ibuprofeno?', widget=widgets.RadioSelect)
-    paracet = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='¿Alguna vez has consumido Paracetamol?', widget=widgets.RadioSelect)
-    amoxicil = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='¿Alguna vez has consumido Amoxicilina?', widget=widgets.RadioSelect)
-    loratadin = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='¿Alguna vez has consumido Loratadina?', widget=widgets.RadioSelect)
-    dexamet = models.IntegerField(choices=[[1, 'Sí'], [0, 'No']], label='¿Alguna vez has consumido Dexametasona?', widget=widgets.RadioSelect)
-
+    cronica = models.IntegerField(choices=[[0, 'Sí'], [1, 'No'], [2, 'No deseo dar esa información']], label='¿Sufre de alguna enfermedad crónica?', widget=widgets.RadioSelect)
+    agente_compra = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='Cuando en tu hogar se necesita comprar medicamentos, ¿eres tú quien realiza la compra?', widget=widgets.RadioSelect)
+    malestar_compra1 = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='Cuando te sientes mal, ¿recurres al uso de medicamentos autorrecetados?', widget=widgets.RadioSelect)
+    malestar_compra2 = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='Cuando te sientes mal, ¿recurres a la compra de medicamentos recetados por un médico?', widget=widgets.RadioSelect)
+    respirat = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Has sufrido recientemente de enfermedades relacionadas al aparato respiratorio?', widget=widgets.RadioSelect)
+    digestiv = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Has sufrido recientemente de enfermedades relacionadas al aparato digestivo?', widget=widgets.RadioSelect)
+    covid = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Has sufrido/sufres de síntomas de Covid-19?', widget=widgets.RadioSelect)
+    ibuprof = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Alguna vez has consumido Ibuprofeno?', widget=widgets.RadioSelect)
+    ranitidin = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Alguna vez has consumido Ranitidina?', widget=widgets.RadioSelect)
+    amoxicil = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Alguna vez has consumido Amoxicilina?', widget=widgets.RadioSelect)
+    loratadin = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Alguna vez has consumido Loratadina?', widget=widgets.RadioSelect)
+    dexamet = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Alguna vez has consumido Dexametasona?', widget=widgets.RadioSelect)
+    epinef = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Alguna vez has consumido Epinefrina?', widget=widgets.RadioSelect)
+    alergia = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Eres alérgico a algunos medicamentos?', widget=widgets.RadioSelect)
+    natural = models.IntegerField(choices=[[0, 'Sí'], [1, 'No']], label='¿Prefieres optar por soluciones naturales en vez de consumir medicamentos (químicos)?',
+                                  widget=widgets.RadioSelect)
+    natural_caso = models.IntegerField(choices=[[1, 'Siempre'], [2, 'Malestares medianamente fuertes'], [3, 'Solo en malestares simples']], label='Si marcaste sí en la pregunta anterior: ¿En qué casos?',
+                                  widget=widgets.RadioSelect)
+    respirat_c = models.IntegerField(choices=[[0, 'Muy poco probable'], [1, 'Poco probable'], [2, 'Muy probable']], label='¿Qué tan probable crees que es que te de alguna enfermedad relacionada al sistema respiratorio?', widget=widgets.RadioSelect)
+    digestiv_c = models.IntegerField(choices=[[0, 'Muy poco probable'], [1, 'Poco probable'], [2, 'Muy probable']], label='¿Qué tan probable crees que es que te de alguna enfermedad relacionada al sistema digestivo?', widget=widgets.RadioSelect)
+    covid_c = models.IntegerField(choices=[[0, 'Muy poco probable'], [1, 'Poco probable'], [2, 'Muy probable']], label='¿Qué tan probable crees que es contagiarte de COVID-19?', widget=widgets.RadioSelect)
 
     # Heurísticos
     d1 = models.IntegerField(choices=[[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7, '7']], label='Estaría dispuesto a comprar cierto tipo de medicamento solo porque mi médico me lo recomendó', widget=widgets.RadioSelectHorizontal)
